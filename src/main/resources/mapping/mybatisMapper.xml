@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.springboot.bootlearn.bootDao.MybatisDao" >
+    <resultMap id="BaseResultMap" type="com.springboot.bootlearn.bootMoudle.MybatisMoudle" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="queue_name" property="queue_name" jdbcType="VARCHAR" />
+        <result column="queue_status" property="queue_status" jdbcType="VARCHAR" />
+        <result column="redis_name" property="redis_name" jdbcType="VARCHAR" />
+        <result column="redis_status" property="redis_status" jdbcType="VARCHAR" />
+    </resultMap>
+    <insert id="insertMybatis" parameterType="com.springboot.bootlearn.bootMoudle.MybatisMoudle">
+        insert into spboot_myb
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null and id != ''">
+                id,
+            </if>
+            <if test="queue_name != null and queue_name != ''">
+                queue_name,
+            </if>
+            <if test="queue_status != null and queue_status != ''">
+                queue_status,
+            </if>
+            <if test="redis_name != null and redis_name != ''">
+                redis_name,
+            </if>
+            <if test="redis_status != null and redis_status != ''">
+                redis_status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null and id != ''">
+                #{id, jdbcType=VARCHAR},
+            </if>
+            <if test="queue_name != null and queue_name != ''">
+                #{queue_name, jdbcType=VARCHAR},
+            </if>
+            <if test="queue_status != null and queue_status != ''">
+                #{queue_status, jdbcType=VARCHAR},
+            </if>
+            <if test="redis_name != null and redis_name != ''">
+                #{redis_name, jdbcType=VARCHAR},
+            </if>
+            <if test="redis_status != null and redis_status != ''">
+                #{redis_status, jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateMybatis" parameterType="com.springboot.bootlearn.bootMoudle.MybatisMoudle">
+        update spboot_myb set
+        <trim suffixOverrides=",">
+            <if test="queue_name != null and queue_name != ''">
+                queue_name=#{queue_name, jdbcType=VARCHAR},
+            </if>
+            <if test="queue_status != null and queue_status != ''">
+                queue_status=#{queue_status, jdbcType=VARCHAR},
+            </if>
+            <if test="redis_name != null and redis_name != ''">
+                redis_name=#{redis_name, jdbcType=VARCHAR},
+            </if>
+            <if test="redis_status != null and redis_status != ''">
+                redis_status=#{redis_status, jdbcType=VARCHAR},
+            </if>
+        </trim>
+      <where>
+         <if test="id != null and id != ''">
+             id=#{id, jdbcType=VARCHAR}
+         </if>
+      </where>
+    </update>
+</mapper>
