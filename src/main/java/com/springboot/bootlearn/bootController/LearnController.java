@@ -31,6 +31,13 @@ public class LearnController {
     @Autowired
     private RedisUtil redisUtil;
     /**
+     * 王泓霏
+     */
+    @RequestMapping(value = "test/git", method = RequestMethod.POST)
+    public String testGit(){
+        return "测试git";
+    }
+    /**
      * author:王泓霏
      * date：2019-3-27
      * schedule：JDBC
